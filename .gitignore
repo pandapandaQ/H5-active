@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+debug.log
+error.log
+.DS_Store
+.idea/*
+dist
+build
+package-lock.json
+.temp
+.next
