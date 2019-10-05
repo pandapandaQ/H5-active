@@ -8,6 +8,7 @@ import Question2 from './question/Question_2'
 import Question3 from './question/Question_3'
 import Question4 from './question/Question_4'
 import Waiting from './Waiting'
+import './Index.scss'
 
 class Index extends Component {
   state = {
@@ -19,7 +20,6 @@ class Index extends Component {
 
   onPageChange = (data) => {
     const { step } = this.state
-    console.log(data)
     switch (data.step) {
       case 0:
         this.setState({ step: step + 1 })
@@ -55,12 +55,20 @@ class Index extends Component {
 
   render() {
     const { step } = this.state;
-    return <div>
+    return <div className='main'>
       <Background />
-      {step === 0 && <Loading step={0} callback={this.onPageChange} />}
-      {step === 1 && <LandingPage step={1} callback={this.onPageChange} />}
+      <div className='main-page' style={{ opacity: step === 0 ? 1 : 0 }}>
+        <Loading step={0} currentStep={step} callback={this.onPageChange} />
+      </div>
+      <div className='main-page' style={{ opacity: step === 1 ? 1 : 0 }}>
+        <LandingPage step={1} callback={this.onPageChange} />
+      </div>
+
       {step === 2 && <Transition step={2} callback={this.onPageChange} />}
-      {step === 3 && <Question1 step={3} callback={this.onPageChange} />}
+
+      <div className='main-page' style={{ opacity: step === 3 ? 1 : 0 }}>
+        <Question1 step={3} callback={this.onPageChange} />
+      </div>
       {step === 4 && <Question2 step={4} callback={this.onPageChange} />}
       {step === 5 && <Question3 step={5} callback={this.onPageChange} />}
       {step === 6 && <Question4 step={6} callback={this.onPageChange} />}
