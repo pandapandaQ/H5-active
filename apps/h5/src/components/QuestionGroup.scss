@@ -1,0 +1,13 @@
+.question-group {
+    color: #d8d8d8;
+    max-width: 300px;
+    font-size: 16px;
+    text-align: left;
+    &__title{
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+    &__item{
+      margin-top: 30px;
+    }
+}
