@@ -8,6 +8,7 @@ import Question2 from './question/Question_2'
 import Question3 from './question/Question_3'
 import Question4 from './question/Question_4'
 import Waiting from './Waiting'
+import Result from './Result'
 import './Index.scss'
 
 class Index extends Component {
@@ -45,7 +46,7 @@ class Index extends Component {
       case 7:
         this.setState({ step: step + 1 })
         break;
-      case 7:
+      case 8:
         this.setState({ step: step + 1 })
         break;
       default:
@@ -66,14 +67,15 @@ class Index extends Component {
 
       {step === 2 && <Transition step={2} callback={this.onPageChange} />}
 
-      <div className='main-page' style={{ opacity: step === 3 ? 1 : 0 }}>
+      {/* <div className='main-page' style={{ opacity: step === 3 ? 1 : 0 }}>
         <Question1 step={3} callback={this.onPageChange} />
-      </div>
+      </div> */}
+      {step === 3 && <Question1 step={3} callback={this.onPageChange} />}
       {step === 4 && <Question2 step={4} callback={this.onPageChange} />}
       {step === 5 && <Question3 step={5} callback={this.onPageChange} />}
       {step === 6 && <Question4 step={6} callback={this.onPageChange} />}
-      {step === 7 && <Waiting step={6} callback={this.onPageChange} />}
-      {step === 8 && <Waiting step={6} callback={this.onPageChange} />}
+      {step === 7 && <Waiting step={7} callback={this.onPageChange} />}
+      {step === 8 && <Result step={8} callback={this.onPageChange} />}
     </div>
   }
 }
