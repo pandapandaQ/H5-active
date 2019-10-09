@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CountTo from 'react-count-to';
+import Mountain2 from '../components/Mountain2'
 import './Waiting.scss'
 
 class Page extends Component {
@@ -12,6 +13,7 @@ class Page extends Component {
 
     render() {
         return <div className='waiting'>
+            <Mountain2 />
             <div className='waiting__block'>
                 <img className="waiting__block-image" src={require('../images/waiting.png')}/>
                 <div className="waiting__block-text-1">

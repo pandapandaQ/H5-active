@@ -4,7 +4,32 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('../images/background.jpg') no-repeat center center;
     background-size:cover;
     z-index: -10;
+    overflow: hidden;
+    background: #000;
+    .start1 {
+        animation: startAnimation 3s infinite linear;
+    }
+    .start2 {
+        animation: startAnimation 4s infinite linear;
+    }
+    .start3 {
+        animation: startAnimation 5s infinite linear;
+    }
+    .start4 {
+        animation: startAnimation 6s infinite linear;
+    }
+}
+
+@keyframes startAnimation {
+    0% { 
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

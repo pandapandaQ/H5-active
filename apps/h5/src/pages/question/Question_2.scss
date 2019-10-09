@@ -1,3 +1,31 @@
 .question-2 {
-
+    .people_q2 {
+        animation: animationPeople_q2 1s ;
+    }
+    .start_q2 {
+        animation: animationStart_q2 1s linear;
+        opacity: 0;
+    }
+    @keyframes animationPeople_q2 {
+        0% { 
+            transform:translate(-300px, 0);
+        }
+        100% {
+            transform:translate(0, 0);
+        }
+    }
+    @keyframes animationStart_q2 {
+        0% { 
+            transform:translate(300px, -250px);
+            opacity: 0.6;
+        }
+        80% {
+            transform:translate(0, 0);
+            opacity: 1;
+        }
+        100% {
+            transform:translate(-60px, 50px);
+            opacity: 0;
+        }
+    }
 }

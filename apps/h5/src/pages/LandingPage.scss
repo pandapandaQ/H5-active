@@ -4,6 +4,21 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('../images/landingPage.png') no-repeat center center;
-    background-size:cover;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .landing {
+        animation: animationlanding 4s infinite;
+    }
+    @keyframes animationlanding {
+        0% { 
+            opacity: 0.4;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0.4;
+        }
+    }
 }

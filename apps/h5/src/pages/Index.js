@@ -14,6 +14,7 @@ import './Index.scss'
 class Index extends Component {
   state = {
     step: 0,
+    answer:1,
   }
   componentWillMount() {
 
@@ -26,7 +27,7 @@ class Index extends Component {
         this.setState({ step: step + 1 })
         break;
       case 1:
-        this.setState({ step: step + 1 })
+        this.setState({ step: step + 2 })
         break;
       case 2:
         this.setState({ step: step + 1 })
@@ -38,7 +39,7 @@ class Index extends Component {
         this.setState({ step: step + 1 })
         break;
       case 5:
-        this.setState({ step: step + 1 })
+        this.setState({ step: step + 1, answer: data.value})
         break;
       case 6:
         this.setState({ step: step + 1 })
@@ -57,12 +58,12 @@ class Index extends Component {
   render() {
     const { step } = this.state;
     return <div className='main'>
-      <Background />
+      <Background step={step}/>
       <div className='main-page' style={{ opacity: step === 0 ? 1 : 0 }}>
         <Loading step={0} currentStep={step} callback={this.onPageChange} />
       </div>
       <div className='main-page' style={{ opacity: step === 1 ? 1 : 0 }}>
-        <LandingPage step={1} callback={this.onPageChange} />
+        <LandingPage step={1} currentStep={step} callback={this.onPageChange} />
       </div>
 
       {step === 2 && <Transition step={2} callback={this.onPageChange} />}
