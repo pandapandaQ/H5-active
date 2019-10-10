@@ -7,7 +7,7 @@ class Page extends Component {
         const { callback, step } = this.props
         setTimeout(() => {
             callback && callback({step})
-        }, 2300);
+        }, 1000);
     }
 
     render() {
