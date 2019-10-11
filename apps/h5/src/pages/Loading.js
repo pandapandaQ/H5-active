@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import CountTo from 'react-count-to';
 import './Loading.scss'
 
+console.log(window.image2)
 class Page extends Component {
     componentDidMount() {
         const { callback, step } = this.props
-        // setTimeout(() => {
-        //     callback && callback({step})
-        // }, 1000);
+        setTimeout(() => {
+            callback && callback({step})
+        }, 2300);
     }
 
     render() {

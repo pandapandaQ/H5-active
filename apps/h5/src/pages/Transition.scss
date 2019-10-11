@@ -87,8 +87,21 @@
         opacity: 0;
     }
 
+    .t3_2 {
+        animation: animationT3_2 7s linear;
+        animation-delay: 12s;
+        opacity: 0;
+        z-index: -2;
+    }
+
+    .t3_3 {
+        animation: animationT3_2 7s linear;
+        animation-delay: 12s;
+        opacity: 0;
+    }
+
     .t3_7 {
-        animation: animationT3_7 5s ;
+        animation: animationT3_7 7s ;
         animation-delay: 12s;
         opacity: 0;
     }
@@ -345,11 +358,54 @@
         transform:translate(25px,-20px);
         opacity: 1;
     }
-    90% {
+    93% {
         opacity: 1;
     }
     100% {
         transform:translate(35px,20px);
+        opacity: 0;
+    }
+}
+
+@keyframes animationT3_2 {
+    0% { 
+        transform:translate(0,300px);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    30% {
+        transform:translate(0,0);
+        opacity: 1;
+    }
+    90% {
+        transform:translate(0,0);
+        opacity: 1;
+    }
+    100% {
+        transform:translate(0,300px);
+        opacity: 0;
+    }
+}
+@keyframes animationT3_3 {
+    0% { 
+        transform:translate(0,300px);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    30% {
+        transform:translate(0,0);
+        opacity: 1;
+    }
+    90% {
+        transform:translate(0,0);
+        opacity: 1;
+    }
+    100% {
+        transform:translate(0,300px);
         opacity: 0;
     }
 }
