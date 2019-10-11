@@ -13,7 +13,7 @@ import './Index.scss'
 
 class Index extends Component {
   state = {
-    step: 0,
+    step: 2,
     answer:1,
   }
   componentWillMount() {
@@ -27,7 +27,7 @@ class Index extends Component {
         this.setState({ step: step + 1 })
         break;
       case 1:
-        this.setState({ step: step + 2 })
+        this.setState({ step: step + 1 })
         break;
       case 2:
         this.setState({ step: step + 1 })

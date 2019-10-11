@@ -5,9 +5,9 @@ import './Loading.scss'
 class Page extends Component {
     componentDidMount() {
         const { callback, step } = this.props
-        setTimeout(() => {
-            callback && callback({step})
-        }, 1000);
+        // setTimeout(() => {
+        //     callback && callback({step})
+        // }, 1000);
     }
 
     render() {
