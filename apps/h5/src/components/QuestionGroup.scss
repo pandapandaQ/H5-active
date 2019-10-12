@@ -1,7 +1,7 @@
 .question-group {
     color: #d8d8d8;
     max-width: 300px;
-    font-size: 16px;
+    font-size: 18px;
     text-align: left;
     position: fixed;
     top: 18%;
@@ -13,4 +13,14 @@
     &__item{
       margin-top: 30px;
     }
+    animation: animationQuestion 1s ;
+}
+
+@keyframes animationQuestion {
+  0% { 
+      transform:translate(-500px, 0);
+  }
+  100% {
+      transform:translate(0, 0);
+  }
 }

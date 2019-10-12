@@ -6,6 +6,13 @@ class MyComponent extends Component {
     const { audio } = this.state;
     this.setState({ audio: !audio })
   }
+  componentDidMount() {
+
+    setTimeout(() => {
+      this.refs.music.play();
+    }, 200);
+    //console.log(this.refs.music)
+  }
   render() {
     const { audio } = this.state;
     return <div className='mountain'>
@@ -14,7 +21,7 @@ class MyComponent extends Component {
           ? <img onClick={this.onClick} style={{ position: "fixed", right: '20px', top: '20px', width: '45px', height: '45px', objectFit: 'cover' }} src={require('../images/m0.png')} />
           : <img onClick={this.onClick} style={{ position: "fixed", right: '20px', top: '20px', width: '45px', height: '45px', objectFit: 'cover' }} src={require('../images/m1.png')} />
       }
-      {audio && <audio autoPlay preload src={require('../images/audio.mp3')}/> }
+      {audio && <audio ref="music" autoPlay src={require('../images/audio.mp3')}/> }
     </div>
   }
 }

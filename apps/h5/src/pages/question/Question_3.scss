@@ -1,9 +1,9 @@
 .question-3 {
     .people_q3 {
-        animation: animationPeople_q3 1s ;
+        animation: animationPeople_q3 2s ;
     }
     .people_q3_2 {
-        animation: animationPeople_q3_2 1s ;
+        animation: animationPeople_q3_2 3s ;
     }
     @keyframes animationPeople_q3 {
         0% { 
@@ -15,6 +15,9 @@
     }
     @keyframes animationPeople_q3_2 {
         0% { 
+            transform:translate(0, 200px);
+        }
+        20% { 
             transform:translate(0, 200px);
         }
         100% {

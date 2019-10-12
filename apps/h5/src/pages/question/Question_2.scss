@@ -1,9 +1,10 @@
 .question-2 {
     .people_q2 {
-        animation: animationPeople_q2 1s ;
+        animation: animationPeople_q2 2s ;
     }
     .start_q2 {
-        animation: animationStart_q2 1s linear;
+        animation: animationStart_q2 2s linear ;
+        animation-delay: 1s;
         opacity: 0;
     }
     @keyframes animationPeople_q2 {

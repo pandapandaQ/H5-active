@@ -79,7 +79,7 @@ class Index extends Component {
       {step === 6 && <Question4 step={6} callback={this.onPageChange} />}
       {step === 7 && <Waiting step={7} callback={this.onPageChange} />}
       {step === 8 && <Result step={8} callback={this.onPageChange} />}
-      {step !== 0 && <Audio/>}
+      {/* {step !== 0 && <Audio/>} */}
       
     </div>
   }
