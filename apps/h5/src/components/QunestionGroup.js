@@ -16,7 +16,7 @@ class MyComponent extends Component {
       }
       {
         data.title && data.items.map((item, index) => {
-          return <div key={index} onClick={() => this.onClick(index + 1)} className='question-group__item'>{item}</div>
+          return <div key={index} onClick={() => this.onClick(index)} className='question-group__item'>{item}</div>
         })
       }
 

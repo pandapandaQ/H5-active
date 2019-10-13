@@ -7,9 +7,8 @@ import Question1 from './question/Question_1'
 import Question2 from './question/Question_2'
 import Question3 from './question/Question_3'
 import Question4 from './question/Question_4'
-import Waiting from './Waiting'
 import Result from './Result'
-import Audio from '../components/Audio'
+// import Audio from '../components/Audio'
 
 import './Index.scss'
 
@@ -58,7 +57,7 @@ class Index extends Component {
   }
 
   render() {
-    const { step } = this.state;
+    const { step, answer } = this.state;
     return <div className='main'>
       <Background step={step}/>
       <div className='main-page' style={{ opacity: step === 0 ? 1 : 0 }}>
@@ -77,10 +76,9 @@ class Index extends Component {
       {step === 4 && <Question2 step={4} callback={this.onPageChange} />}
       {step === 5 && <Question3 step={5} callback={this.onPageChange} />}
       {step === 6 && <Question4 step={6} callback={this.onPageChange} />}
-      {step === 7 && <Waiting step={7} callback={this.onPageChange} />}
-      {step === 8 && <Result step={8} callback={this.onPageChange} />}
+      {step === 7 && <Result step={7} answer={answer} callback={this.onPageChange} />}
+      {/* {step === 8 && <Result step={8} callback={this.onPageChange} />} */}
       {/* {step !== 0 && <Audio/>} */}
-      
     </div>
   }
 }

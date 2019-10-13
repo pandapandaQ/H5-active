@@ -7,10 +7,11 @@ class MyComponent extends Component {
     this.setState({ audio: !audio })
   }
   componentDidMount() {
-
+    const { getElement, audio } = this.props;
     setTimeout(() => {
       this.refs.music.play();
     }, 200);
+    getElement && getElement(this.refs.music, audio)
     //console.log(this.refs.music)
   }
   render() {
@@ -18,10 +19,10 @@ class MyComponent extends Component {
     return <div className='mountain'>
       {
         audio
-          ? <img onClick={this.onClick} style={{ position: "fixed", right: '20px', top: '20px', width: '45px', height: '45px', objectFit: 'cover' }} src={require('../images/m0.png')} />
-          : <img onClick={this.onClick} style={{ position: "fixed", right: '20px', top: '20px', width: '45px', height: '45px', objectFit: 'cover' }} src={require('../images/m1.png')} />
+          ? <img onClick={this.onClick} style={{ position: "fixed", right: '20px', top: '20px', width: '34px', height: '34px', objectFit: 'cover' }} src={require('../images/m0.png')} />
+          : <img onClick={this.onClick} style={{ position: "fixed", right: '20px', top: '20px', width: '34px', height: '34px', objectFit: 'cover' }} src={require('../images/m1.png')} />
       }
-      {audio && <audio ref="music" autoPlay src={require('../images/audio.mp3')}/> }
+      {audio && <audio ref="music" autoPlay src={require('../images/audio.mp3')} />}
     </div>
   }
 }

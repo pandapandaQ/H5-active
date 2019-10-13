@@ -9,17 +9,17 @@
     overflow: hidden;
     background: #000;
     .start1 {
-        animation: startAnimation 3s infinite linear;
-    }
-    .start2 {
         animation: startAnimation 4s infinite linear;
     }
-    .start3 {
+    .start2 {
         animation: startAnimation 5s infinite linear;
     }
-    .start4 {
+    .start3 {
         animation: startAnimation 6s infinite linear;
     }
+    // .start4 {
+    //     animation: startAnimation 6s infinite linear;
+    // }
 }
 
 @keyframes startAnimation {
@@ -27,7 +27,7 @@
         opacity: 0;
     }
     50% {
-        opacity: 1;
+        opacity: 0.9;
     }
     100% {
         opacity: 0;

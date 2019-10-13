@@ -15,6 +15,11 @@ class Page extends Component {
     }, 19500);
   }
 
+  onClock = () => {
+    const { callback, step } = this.props
+    callback && callback({step})
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.step === nextProps.currentStep && this.props.currentStep !== nextProps.currentStep) {
 
@@ -53,10 +58,10 @@ class Page extends Component {
 
         <img className='t3_1' style={{ position: "fixed", right: '0', bottom: '130px', width: '269px', height: '305px', color: '#d8d8d8' }} src={require('../images/t3_1.png')} />
 
-        <div className='t3_7' style={{ position: "fixed", left: '12%', top: '130px', color: '#d8d8d8' }}>如果真实存在</div>
-        <div className='t3_7' style={{ position: "fixed", left: '12%', top: '170px', color: '#d8d8d8' }}>另一个平行宇宙的你</div>
-        <div className='t3_7' style={{ position: "fixed", left: '12%', top: '210px', color: '#d8d8d8' }}>会是什么样？</div>
+        <div className='t3_7' style={{ position: "fixed", left: '12%', top: '130px', color: '#d8d8d8' }}>马上进入平行宇宙</div>
+        <div className='t3_7' style={{ position: "fixed", left: '12%', top: '170px', color: '#d8d8d8' }}>测测你的探索潜能吧</div>
 
+        <img onClick={this.onClock} style={{ position: "fixed", left: '12%', top: '30px', width: '74px', height: '29px', objectFit: 'cover' }} src={require('../images/skip.png')} />
 
       
       </div>
