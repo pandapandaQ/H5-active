@@ -3,11 +3,13 @@ import './LandingPage.scss'
 import Mountain from '../components/Mountain'
 import Audio from '../components/Audio'
 class Page extends Component {
+  
   onClick = () => {
     const { callback, step, currentStep } = this.props
     this.musicState && this.music && this.music.play();
     currentStep === step && callback && callback({ step })
   }
+  
 
   setElement = (e,a)=> {
     this.music = e;

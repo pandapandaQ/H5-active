@@ -10,13 +10,14 @@ class Page extends Component {
   }
   componentDidMount() {
     const { callback, step } = this.props
-      setTimeout(() => {
+      this.timeout = setTimeout(() => {
         callback && callback({step})
     }, 19500);
   }
 
   onClock = () => {
     const { callback, step } = this.props
+    clearTimeout(this.timeout)
     callback && callback({step})
   }
 

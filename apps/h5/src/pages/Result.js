@@ -35,7 +35,7 @@ const Text3Array = [
 class Page extends Component {
   state = { imgUrl: '', loading: true }
   componentDidMount() {
-    const { answer = 1 } = this.props;
+    const { answer = 1, userInfo } = this.props;
 
     let canvas = this.refs.res;
     canvas.width = window.innerWidth;
@@ -60,11 +60,13 @@ class Page extends Component {
 
       }
 
-      // let img3 = new Image();
-      // img3.src = require('../images/r2_1.png');
-      // img3.onload = function () {
-      //   ctx.drawImage(img3, (canvas.width - 364) / 2, 130, 364, 317);
-      // }
+      //头像
+      let img3 = new Image();
+      img3.src = userInfo.headimgurl.replace('http://thirdwx.qlogo.cn','https://finalmeet.com/wechat_image');
+      img3.crossOrigin = "Anonymous";
+      img3.onload = function () {
+        ctx.drawImage(img3, (canvas.width - 340) / 2, 35, 44, 44);
+      }
 
       let img4 = new Image();
       img4.src = require('../images/r3.png');
@@ -75,15 +77,15 @@ class Page extends Component {
       let img5 = new Image();
       img5.src = require('../images/qrcode.png');
       img5.onload = function () {
-        ctx.drawImage(img5, 280, 550, 63, 63);
+        ctx.drawImage(img5, 280, 550, 64, 64);
       }
 
       setTimeout(() => {
         this.setState({ imgUrl: canvas.toDataURL("image/png") })
-      }, 1000);
+      }, 2200);
       setTimeout(() => {
         this.setState({ loading: false })
-      }, 2000);
+      }, 2500);
 
       ctx.fillStyle = '#ffffff'
       ctx.font = "22px Arial";
@@ -105,7 +107,6 @@ class Page extends Component {
       ctx.fillText(Text2[1], 278, 460);
 
       const Text3 = this.randomsort(Text3Array[answer])
-      console.log(Text3)
       ctx.fillStyle = '#a8a8a8'
       ctx.font = "12px Arial";
       ctx.fillText(Text3[0][0], 30, 500);
@@ -117,6 +118,10 @@ class Page extends Component {
       ctx.fillStyle = '#a8a8a8'
       ctx.font = "12px Arial";
       ctx.fillText("扫码解锁你的潜能", 262, 632);
+
+      ctx.fillStyle = '#a8a8a8'
+      ctx.font = "12px Arial";
+      ctx.fillText(userInfo.nickname, (canvas.width - 340) / 2, 100);
 
     }
   }
