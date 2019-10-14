@@ -17,7 +17,7 @@ import './Index.scss'
 
 class Index extends Component {
   state = {
-    step: 0,
+    step: 6,
     answer: 1,
     scrren:false,
     userInfo: {
@@ -137,9 +137,6 @@ class Index extends Component {
         this.setState({ step: step + 1 })
         break;
       case 7:
-        this.setState({ step: step + 1 })
-        break;
-      case 8:
         this.setState({ step: step + 1 })
         break;
       default:
