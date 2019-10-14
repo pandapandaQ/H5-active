@@ -19,7 +19,7 @@ class Page extends Component {
 
   getOffset(num) {
     let res = 0
-    if(num > 240) {
+    if(num > 200) {
       res = num - 360
     } else{
       res = num;

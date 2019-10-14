@@ -56,7 +56,7 @@ class Page extends Component {
       this.setState({ imgUrl: canvas.toDataURL("image/png") })
       setTimeout(() => {
         this.setState({ loading: false })
-      }, 2000);
+      }, 4000);
     });
   }
 

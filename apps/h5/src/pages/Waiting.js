@@ -17,7 +17,7 @@ class Page extends Component {
             <div className='waiting__block'>
                 <img className="waiting__block-image" src={require('../images/waiting.png')} />
                 <div className="waiting__block-text-1">
-                    <CountTo to={99} speed={2500} />
+                    <CountTo to={99} speed={4000} />
                     <span>%</span>
                 </div>
                 <div className="waiting__block-text-2">
