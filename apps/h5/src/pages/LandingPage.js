@@ -6,6 +6,7 @@ class Page extends Component {
   
   onClick = () => {
     const { callback, step, currentStep } = this.props
+    console.log(this.musicState)
     this.musicState && this.music && this.music.play();
     currentStep === step && callback && callback({ step })
   }
@@ -14,6 +15,7 @@ class Page extends Component {
   setElement = (e,a)=> {
     this.music = e;
     this.musicState = a;
+
   }
 
   render() {

@@ -4,10 +4,13 @@ class MyComponent extends Component {
   state = { audio: true }
   onClick = () => {
     const { audio } = this.state;
+    const { getElement } = this.props;
     this.setState({ audio: !audio })
+    getElement && getElement(this.refs.music, !audio)
   }
   componentDidMount() {
-    const { getElement, audio } = this.props;
+    const { getElement } = this.props;
+    const { audio } = this.state;
     setTimeout(() => {
       this.refs.music.play();
     }, 200);

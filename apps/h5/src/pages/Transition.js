@@ -62,7 +62,7 @@ class Page extends Component {
         <div className='t3_7' style={{ position: "fixed", left: '12%', top: '130px', color: '#d8d8d8' }}>马上进入平行宇宙</div>
         <div className='t3_7' style={{ position: "fixed", left: '12%', top: '170px', color: '#d8d8d8' }}>测测你的探索潜能吧</div>
 
-        <img onClick={this.onClock} style={{ position: "fixed", left: '12%', top: '30px', width: '74px', height: '29px', objectFit: 'cover' }} src={require('../images/skip.png')} />
+        <img onClick={this.onClock} style={{ position: "fixed", right: '12%', bottom: '60px', width: '74px', height: '29px', objectFit: 'cover' }} src={require('../images/skip.png')} />
 
       
       </div>

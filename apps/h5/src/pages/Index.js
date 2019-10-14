@@ -19,6 +19,7 @@ class Index extends Component {
   state = {
     step: 0,
     answer: 1,
+    scrren:false,
     userInfo: {
       // headimgurl: "http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq4gq4FGJsRQg7u7KKf6aqzcLoNickuowTGcQr52z2jfTtnJQCyYibwNjLhoiaA1qUvPpHBmtI0xwJCg/132",
       // nickname: "PandaQ"
@@ -28,21 +29,32 @@ class Index extends Component {
   componentDidMount() {
     let data = qs.parse(window.location.href.split('?')[1]);
     const { code } = data
-
+    const self = this;
     console.log('code',code)
     if (code) {
       axios.get(`https://finalmeet.com/kaltendin/api/users?code=${code}`).then((res = {}) => {
         const { code, data } = res.data
         console.log('res',res)
-        if (code === 0) {
+        if (res.data.code === 0) {
           this.setState({ userInfo: data })
         } else {
           window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e31314f63c6e1be&redirect_uri=https%3A%2F%2Ffinalmeet.com%2Fkaltendin%2Fexploratory_testing%2F&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect'
         }
       });
       this.initWechat()
-    }
-    
+    } else {
+      // 开发调试时可屏蔽
+      //window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e31314f63c6e1be&redirect_uri=https%3A%2F%2Ffinalmeet.com%2Fkaltendin%2Fexploratory_testing%2F&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect'
+    } 
+
+    window.addEventListener('orientationchange', function(event){
+      if ( window.orientation == 180 || window.orientation==0 ) {
+          self.setState({scrren:false})
+      }
+      if( window.orientation == 90 || window.orientation == -90 ) {
+        self.setState({scrren:true})
+      }
+  });
   }
 
   initWechat = () => {
@@ -51,9 +63,7 @@ class Index extends Component {
       url: window.location.href.split("#")[0],
       debug: false
     }).then(({data})=>{
-      console.log('-------data',data)
       if(data.code === 0) {
-        console.log('-------data.data',data.data)
         wx.config({
           debug: false,
           appId: data.data.appId,
@@ -63,40 +73,40 @@ class Index extends Component {
           jsApiList: ["updateAppMessageShareData","updateTimelineShareData","onMenuShareAppMessage","onMenuShareTimeline"]
         });
         wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
-          wx.updateAppMessageShareData({ 
-            title: '探索你的潜能', // 分享标题
-            desc: '探索你的潜能', // 分享描述
-            link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.png', // 分享图标
-            success: function () {
-              // 设置成功
-            }
-          })
-          wx.updateTimelineShareData({ 
-            title: '探索你的潜能', // 分享标题
-            link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.png', // 分享图标
-            success: function () {
-              // 设置成功
-            }
-          })
-          // wx.onMenuShareAppMessage({
-          //   title: '这有一张票送你去宇宙外太空，探索你的潜能', // 分享标题
-          //   desc: '恭喜您正在登陆X星球，前方高能…', // 分享描述
+          // wx.updateAppMessageShareData({ 
+          //   title: '探索你的潜能', // 分享标题
+          //   desc: '探索你的潜能', // 分享描述
           //   link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          //   imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.png', // 分享图标
+          //   imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.jpg', // 分享图标
           //   success: function () {
-          //     // 用户点击了分享后执行的回调函数
+          //     // 设置成功
           //   }
           // })
-          // wx.onMenuShareTimeline({
-          //   title: '这有一张票送你去宇宙外太空，探索你的潜能', // 分享标题
+          // wx.updateTimelineShareData({ 
+          //   title: '探索你的潜能', // 分享标题
           //   link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          //   imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.png', // 分享图标
+          //   imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.jpg', // 分享图标
           //   success: function () {
-          //   // 用户点击了分享后执行的回调函数
+          //     // 设置成功
           //   }
           // })
+          wx.onMenuShareAppMessage({
+            title: '这有一张票送你去宇宙外太空，探索你的潜能', // 分享标题
+            desc: '恭喜您正在登陆X星球，前方高能…', // 分享描述
+            link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.jpg', // 分享图标
+            success: function () {
+              // 用户点击了分享后执行的回调函数
+            }
+          })
+          wx.onMenuShareTimeline({
+            title: '这有一张票送你去宇宙外太空，探索你的潜能', // 分享标题
+            link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.jpg', // 分享图标
+            success: function () {
+            // 用户点击了分享后执行的回调函数
+            }
+          })
         }); 
       }
     })
@@ -138,7 +148,7 @@ class Index extends Component {
   }
 
   render() {
-    const { step, answer, userInfo } = this.state;
+    const { step, answer, userInfo,scrren } = this.state;
     return <div className='main'>
       <Background step={step} />
       <div className='main-page' style={{ opacity: step === 0 ? 1 : 0 }}>
@@ -160,6 +170,12 @@ class Index extends Component {
       {step === 7 && <Result step={7} answer={answer} userInfo={userInfo} callback={this.onPageChange} />}
       {/* {step === 8 && <Result step={8} callback={this.onPageChange} />} */}
       {/* {step !== 0 && <Audio/>} */}
+      {
+        scrren && <div className='tips'>
+        <img  src={require('../images/change.jpg')}/>
+      </div>
+      }
+
     </div>
   }
 }
