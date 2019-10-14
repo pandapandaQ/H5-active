@@ -17,7 +17,7 @@ import './Index.scss'
 
 class Index extends Component {
   state = {
-    step: 6,
+    step: 0,
     answer: 1,
     scrren:false,
     userInfo: {
@@ -44,7 +44,7 @@ class Index extends Component {
       this.initWechat()
     } else {
       // 开发调试时可屏蔽
-      //window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e31314f63c6e1be&redirect_uri=https%3A%2F%2Ffinalmeet.com%2Fkaltendin%2Fexploratory_testing%2F&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect'
+      window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e31314f63c6e1be&redirect_uri=https%3A%2F%2Ffinalmeet.com%2Fkaltendin%2Fexploratory_testing%2F&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect'
     } 
 
     window.addEventListener('orientationchange', function(event){

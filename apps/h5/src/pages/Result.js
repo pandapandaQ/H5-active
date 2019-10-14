@@ -3,6 +3,7 @@ import './Result.scss'
 import Waiting from './Waiting'
 import Background from './Background'
 import Index from './Index';
+import html2canvas from 'html2canvas';
 
 const imgArray = [
   require('../images/r2_1.png'),
@@ -36,95 +37,7 @@ const Text3Array = [
 class Page extends Component {
   state = { imgUrl: '', loading: true }
   componentDidMount() {
-    const { answer = 1, userInfo } = this.props;
 
-    let canvas = this.refs.res;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    let ctx = canvas.getContext('2d')
-
-    let imgbk = new Image();
-    imgbk.src = require('../images/rbk.jpg');
-    imgbk.onload = () => {
-      ctx.drawImage(imgbk, 0, 0, 750, 1334);
-
-      let img = new Image();
-      img.src = require('../images/r1.png');
-      img.onload = function () {
-        ctx.drawImage(img, (canvas.width - 654) / 2, 120, 654, 158);
-      }
-
-      let img2 = new Image();
-      img2.src = imgArray[answer];
-      img2.onload = function () {
-        ctx.drawImage(img2, (canvas.width - 728) / 2, 240, 728, 634);
-
-      }
-
-      //头像
-      let img3 = new Image();
-      img3.src = userInfo.headimgurl ? userInfo.headimgurl.replace('http://thirdwx.qlogo.cn','https://finalmeet.com/wechat_image'):'' ;
-      img3.crossOrigin = "Anonymous";
-      img3.onload = function () {
-        ctx.drawImage(img3, 50, 100, 66, 66);
-      }
-
-      let img4 = new Image();
-      img4.src = require('../images/r3.png');
-      img4.onload = function () {
-        ctx.drawImage(img4, 60, 1040, 256, 144);
-      }
-
-      let img5 = new Image();
-      img5.src = require('../images/qrcode.jpg');
-      img5.onload = function () {
-        ctx.drawImage(img5, 560, 1020, 128, 128);
-      }
-
-      setTimeout(() => {
-        this.setState({ imgUrl: canvas.toDataURL("image/png") })
-      }, 2200);
-      setTimeout(() => {
-        this.setState({ loading: false })
-      }, 2700);
-
-      ctx.fillStyle = '#ffffff'
-      ctx.font = "44px Arial";
-      ctx.fillText(Text1Array[answer], 60, 880);
-
-      const Text2 = this.randomsort(Text2Array[answer])
-
-      ctx.fillStyle = "#4e4e4e";
-      ctx.fillRect(304, 844, 188, 50);
-      ctx.fillStyle = '#ffffff'
-      ctx.font = "30px Arial";
-      ctx.fillText(Text2[0], 340, 878);
-
-
-      ctx.fillStyle = "#4e4e4e";
-      ctx.fillRect(520, 844, 188, 50);
-      ctx.fillStyle = '#ffffff'
-      ctx.font = "30px Arial";
-      ctx.fillText(Text2[1], 556, 878);
-
-      const Text3 = this.randomsort(Text3Array[answer])
-      ctx.fillStyle = '#a8a8a8'
-      ctx.font = "24px Arial";
-      ctx.fillText(Text3[0][0], 60, 940);
-
-      ctx.fillStyle = '#a8a8a8'
-      ctx.font = "24px Arial";
-      ctx.fillText(Text3[0][1], 60, 980);
-
-      ctx.fillStyle = '#a8a8a8'
-      ctx.font = "24px Arial";
-      ctx.fillText("扫码解锁你的潜能", 524, 1190);
-
-      ctx.fillStyle = '#a8a8a8'
-      ctx.font = "24px Arial";
-      ctx.fillText(userInfo.nickname||'', 50, 240);
-
-    }
   }
 
   randomsort = (array) => {
@@ -135,27 +48,53 @@ class Page extends Component {
     return res;
   }
 
+  onload = () => {
+    html2canvas(this.refs.result, {
+      useCORS: true,
+      logging: false
+    }).then(canvas => {
+      this.setState({ imgUrl: canvas.toDataURL("image/png") })
+      setTimeout(() => {
+        this.setState({ loading: false })
+      }, 2000);
+    });
+  }
+
   render() {
     const { imgUrl, loading } = this.state;
-    return <div>
-      <div style={{ position: "fixed" }}>
-        {
-          !imgUrl && <canvas ref='res' width="750" height="1334"></canvas>
-        }
-      </div>
+    const { answer = 1, userInfo } = this.props;
+    const windowWidth = window.innerWidth;
+    const Text2 = this.randomsort(Text2Array[answer])
+    const Text3 = this.randomsort(Text3Array[answer])
+    const avatar = userInfo.headimgurl ? userInfo.headimgurl.replace('http://thirdwx.qlogo.cn', 'https://finalmeet.com/wechat_image') : ''
+    const userName = userInfo.nickname || '';
+    return <div className="result">
+      <div ref='result' className="result-canvas">
+        <img onLoad={this.onload} style={{ width: '100%', height: '100%' }} src={require('../images/rbk.jpg')} />
+        <img style={{ position: "fixed", top: '24px', left: '10%', height: '79px', width: '327px', objectFit: 'cover' }} src={require('../images/r1.png')} />
+        <img style={{ position: "fixed", top: '15%', left: `${(windowWidth - 364) / 2}px`, height: '317px', width: '364px', objectFit: 'cover' }} src={imgArray[answer]} />
+        <div style={{ position: "fixed", left: '24px', top: '61%', color: '#ffffff', fontSize: '22px' }}>{Text1Array[answer]}</div>
+        <div style={{ position: "fixed", left: '140px', top: '62%', color: '#ffffff', padding: '1px 12px 4px 12px', background: "#4e4e4e", fontSize: '15px' }}>{Text2[0]}</div>
+        <div style={{ position: "fixed", left: '230px', top: '62%', color: '#ffffff', padding: '1px 12px 4px 12px', background: "#4e4e4e", fontSize: '15px' }}>{Text2[1]}</div>
+        <div style={{ position: "fixed", left: '24px', top: '68%', color: '#a8a8a8', fontSize: '12px' }}>{Text3[0][0]}</div>
+        <div style={{ position: "fixed", left: '24px', top: '71%', color: '#a8a8a8', fontSize: '12px' }}>{Text3[0][1]}</div>
 
-      <div className="result">
-        {loading && <img style={{ position: "fixed", left: '-150px', top: '-100px', width: '850px', height: '1000px', objectFit: 'cover' }} src={require('../images/background.jpg')} />}
-        {loading && <Waiting />}
-      </div>
+        <img style={{ position: "fixed", top: '78%', left: `24px`, height: '72px', width: '128px' }} src={require('../images/r3.png')} />
+        <img style={{ position: "fixed", top: '77%', right: `24px`, height: '80px', width: '80px' }} src={require('../images/qrcode.jpg')} />
+        <div style={{ position: "fixed", top: '91%', right: '24px', color: '#a8a8a8', fontSize: '12px' }}>扫码解锁你的潜能</div>
 
+        <img style={{ position: "fixed", top: '30px', left: `28px`, height: '44px', width: '44px', borderRadius: '33px' }} src={avatar} />
+        <div style={{ position: "fixed", top: '80px', left: '28px', color: '#a8a8a8', fontSize: '12px' }}>{userName}</div>
+      </div>
       <div className="result-image">
-        <img className="result-image-image" src={imgUrl} />
-        {/* <img src={require('../images/rbk.jpg')} /> */}
+        <img alt="" src={imgUrl} />
       </div>
-
-    
-
+      {
+        loading && <div className="result-loading">
+          <img style={{ position: "fixed", left: '-150px', top: '-100px', width: '850px', height: '1000px', objectFit: 'cover' }} src={require('../images/background.jpg')} />
+          <Waiting />
+        </div>
+      }
 
     </div>
   }
