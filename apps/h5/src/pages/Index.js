@@ -45,7 +45,7 @@ class Index extends Component {
     } else {
       // 开发调试时可屏蔽
       window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e31314f63c6e1be&redirect_uri=https%3A%2F%2Ffinalmeet.com%2Fkaltendin%2Fexploratory_testing%2F&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect'
-    } 
+    }
 
     window.addEventListener('orientationchange', function(event){
       if ( window.orientation == 180 || window.orientation==0 ) {
@@ -54,7 +54,10 @@ class Index extends Component {
       if( window.orientation == 90 || window.orientation == -90 ) {
         self.setState({scrren:true})
       }
-  });
+    });
+
+    //事件上报
+      window.MtaH5 && window.MtaH5.clickStat('ceshi-10',{'page1':'true'})
   }
 
   initWechat = () => {
@@ -73,7 +76,7 @@ class Index extends Component {
           jsApiList: ["updateAppMessageShareData","updateTimelineShareData","onMenuShareAppMessage","onMenuShareTimeline"]
         });
         wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
-          // wx.updateAppMessageShareData({ 
+          // wx.updateAppMessageShareData({
           //   title: '探索你的潜能', // 分享标题
           //   desc: '探索你的潜能', // 分享描述
           //   link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -82,7 +85,7 @@ class Index extends Component {
           //     // 设置成功
           //   }
           // })
-          // wx.updateTimelineShareData({ 
+          // wx.updateTimelineShareData({
           //   title: '探索你的潜能', // 分享标题
           //   link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
           //   imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.jpg', // 分享图标
@@ -107,7 +110,7 @@ class Index extends Component {
             // 用户点击了分享后执行的回调函数
             }
           })
-        }); 
+        });
       }
     })
   }

@@ -57,9 +57,12 @@ class Page extends Component {
         this.setState({ imgUrl: canvas.toDataURL("image/png") })
         setTimeout(() => {
           this.setState({ loading: false })
+          //事件上报
+          window.MtaH5 && window.MtaH5.clickStat('ceshi-10',{'page4':'true'})
         }, 300);
+
       });
-    }, 3000);
+    }, 4500);
   }
 
   render() {

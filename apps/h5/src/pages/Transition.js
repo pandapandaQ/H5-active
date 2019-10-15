@@ -13,6 +13,9 @@ class Page extends Component {
       this.timeout = setTimeout(() => {
         callback && callback({step})
     }, 19500);
+
+    //事件上报
+    window.MtaH5 && window.MtaH5.clickStat('ceshi-10',{'page2':'true'})
   }
 
   onClock = () => {

@@ -9,6 +9,9 @@ class Page extends Component {
         // setTimeout(() => {
         //     callback && callback({step})
         // }, 2300);
+
+        //事件上报
+        window.MtaH5 && window.MtaH5.clickStat('ceshi-10',{'page3':'true'})
     }
 
     render() {
@@ -17,7 +20,7 @@ class Page extends Component {
             <div className='waiting__block'>
                 <img className="waiting__block-image" src={require('../images/waiting.png')} />
                 <div className="waiting__block-text-1">
-                    <CountTo to={99} speed={3200} />
+                    <CountTo to={99} speed={4700} />
                     <span>%</span>
                 </div>
                 <div className="waiting__block-text-2">
