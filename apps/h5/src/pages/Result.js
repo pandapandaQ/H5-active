@@ -75,15 +75,17 @@ class Page extends Component {
         <img onLoad={this.onload} style={{ width: '100%', height: '100%' }} src={require('../images/rbk.jpg')} />
         <img style={{ position: "fixed", top: '24px', left: '10%', height: '79px', width: '327px', objectFit: 'cover' }} src={require('../images/r1.png')} />
         <img style={{ position: "fixed", top: '15%', left: `${(windowWidth - 364) / 2}px`, height: '317px', width: '364px', objectFit: 'cover' }} src={imgArray[answer]} />
-        <div style={{ position: "fixed", left: '24px', top: '61%', color: '#ffffff', fontSize: '22px' }}>{Text1Array[answer]}</div>
-        <div style={{ position: "fixed", left: '140px', top: '62%', color: '#ffffff', padding: '1px 12px 4px 12px', background: "#4e4e4e", fontSize: '15px' }}>{Text2[0]}</div>
-        <div style={{ position: "fixed", left: '230px', top: '62%', color: '#ffffff', padding: '1px 12px 4px 12px', background: "#4e4e4e", fontSize: '15px' }}>{Text2[1]}</div>
-        <div style={{ position: "fixed", left: '24px', top: '68%', color: '#a8a8a8', fontSize: '12px' }}>{Text3[0][0]}</div>
-        <div style={{ position: "fixed", left: '24px', top: '71%', color: '#a8a8a8', fontSize: '12px' }}>{Text3[0][1]}</div>
+        
+        <div style={{ position: "fixed", left: '24px', top: '64%', color: '#ffffff', fontSize: '22px' }}>{Text1Array[answer]}</div>
+        <div style={{ position: "fixed", left: '140px', top: '64%', color: '#ffffff', padding: '1px 12px 4px 12px', background: "#4e4e4e", fontSize: '15px' }}>{Text2[0]}</div>
+        <div style={{ position: "fixed", left: '230px', top: '64%', color: '#ffffff', padding: '1px 12px 4px 12px', background: "#4e4e4e", fontSize: '15px' }}>{Text2[1]}</div>
+        
+        <div style={{ position: "fixed", left: '24px', top: '71%', color: '#a8a8a8', fontSize: '12px' }}>{Text3[0][0]}</div>
+        <div style={{ position: "fixed", left: '24px', top: '74%', color: '#a8a8a8', fontSize: '12px' }}>{Text3[0][1]}</div>
 
-        <img style={{ position: "fixed", top: '78%', left: `24px`, height: '72px', width: '128px' }} src={require('../images/r3.png')} />
-        <img style={{ position: "fixed", top: '77%', right: `24px`, height: '80px', width: '80px' }} src={require('../images/qrcode.jpg')} />
-        <div style={{ position: "fixed", top: '91%', right: '24px', color: '#a8a8a8', fontSize: '12px' }}>扫码解锁你的潜能</div>
+        <img style={{ position: "fixed", top: '81%', left: `24px`, height: '72px', width: '128px' }} src={require('../images/r3.png')} />
+        <img style={{ position: "fixed", top: '80%', right: `24px`, height: '80px', width: '80px' }} src={require('../images/qrcode.jpg')} />
+        <div style={{ position: "fixed", top: '94%', right: '24px', color: '#a8a8a8', fontSize: '12px' }}>扫码解锁你的潜能</div>
 
         <img style={{ position: "fixed", top: '30px', left: `28px`, height: '44px', width: '44px', borderRadius: '33px' }} src={avatar} />
         <div style={{ position: "fixed", top: '80px', left: '28px', color: '#a8a8a8', fontSize: '12px' }}>{userName}</div>
