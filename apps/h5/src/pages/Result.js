@@ -49,15 +49,17 @@ class Page extends Component {
   }
 
   onload = () => {
-    html2canvas(this.refs.result, {
-      useCORS: true,
-      logging: false
-    }).then(canvas => {
-      this.setState({ imgUrl: canvas.toDataURL("image/png") })
-      setTimeout(() => {
-        this.setState({ loading: false })
-      }, 4000);
-    });
+    setTimeout(() => {
+      html2canvas(this.refs.result, {
+        useCORS: true,
+        logging: false
+      }).then(canvas => {
+        this.setState({ imgUrl: canvas.toDataURL("image/png") })
+        setTimeout(() => {
+          this.setState({ loading: false })
+        }, 300);
+      });
+    }, 3000);
   }
 
   render() {
