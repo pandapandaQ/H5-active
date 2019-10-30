@@ -54,7 +54,10 @@ class Index extends Component {
       if( window.orientation == 90 || window.orientation == -90 ) {
         self.setState({scrren:true})
       }
-  });
+    });
+
+    //事件上报
+      window.MtaH5 && window.MtaH5.clickStat('ceshi-10',{'page1':'true'})
   }
 
   initWechat = () => {
@@ -73,7 +76,7 @@ class Index extends Component {
           jsApiList: ["updateAppMessageShareData","updateTimelineShareData","onMenuShareAppMessage","onMenuShareTimeline"]
         });
         wx.ready(function () {   //需在用户可能点击分享按钮前就先调用
-          // wx.updateAppMessageShareData({ 
+          // wx.updateAppMessageShareData({
           //   title: '探索你的潜能', // 分享标题
           //   desc: '探索你的潜能', // 分享描述
           //   link: 'https://cocostar.com.cn/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -82,7 +85,7 @@ class Index extends Component {
           //     // 设置成功
           //   }
           // })
-          // wx.updateTimelineShareData({ 
+          // wx.updateTimelineShareData({
           //   title: '探索你的潜能', // 分享标题
           //   link: 'https://cocostar.com.cn/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
           //   imgUrl: 'https://cocostar.com.cn/kaltendin/exploratory_testing/share.jpg', // 分享图标
@@ -107,7 +110,7 @@ class Index extends Component {
             // 用户点击了分享后执行的回调函数
             }
           })
-        }); 
+        });
       }
     })
   }
