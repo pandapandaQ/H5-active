@@ -68,7 +68,7 @@ class Page extends Component {
     const windowWidth = window.innerWidth;
     const Text2 = this.randomsort(Text2Array[answer])
     const Text3 = this.randomsort(Text3Array[answer])
-    const avatar = userInfo.headimgurl ? userInfo.headimgurl.replace('http://thirdwx.qlogo.cn', 'https://finalmeet.com/wechat_image') : ''
+    const avatar = userInfo.headimgurl ? userInfo.headimgurl.replace('http://thirdwx.qlogo.cn', 'https://cocostar.com.cn/wechat_image') : ''
     const userName = userInfo.nickname || '';
     return <div className="result">
       <div ref='result' className="result-canvas">

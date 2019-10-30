@@ -32,19 +32,19 @@ class Index extends Component {
     const self = this;
     console.log('code',code)
     if (code) {
-      axios.get(`https://finalmeet.com/kaltendin/api/users?code=${code}`).then((res = {}) => {
+      axios.get(`https://cocostar.com.cn/kaltendin/api/users?code=${code}`).then((res = {}) => {
         const { code, data } = res.data
         console.log('res',res)
         if (res.data.code === 0) {
           this.setState({ userInfo: data })
         } else {
-          window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e31314f63c6e1be&redirect_uri=https%3A%2F%2Ffinalmeet.com%2Fkaltendin%2Fexploratory_testing%2F&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect'
+          window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e31314f63c6e1be&redirect_uri=https%3A%2F%2Fcocostar.com.cn%2Fkaltendin%2Fexploratory_testing%2F&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect'
         }
       });
       this.initWechat()
     } else {
       // 开发调试时可屏蔽
-      window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e31314f63c6e1be&redirect_uri=https%3A%2F%2Ffinalmeet.com%2Fkaltendin%2Fexploratory_testing%2F&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect'
+      window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4e31314f63c6e1be&redirect_uri=https%3A%2F%2Fcocostar.com.cn%2Fkaltendin%2Fexploratory_testing%2F&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect'
     } 
 
     window.addEventListener('orientationchange', function(event){
@@ -58,7 +58,7 @@ class Index extends Component {
   }
 
   initWechat = () => {
-    axios.post(`https://finalmeet.com/kaltendin/api/users/jsconfig`,{
+    axios.post(`https://cocostar.com.cn/kaltendin/api/users/jsconfig`,{
       jsApiList: ["updateAppMessageShareData","updateTimelineShareData","onMenuShareAppMessage","onMenuShareTimeline"],
       url: window.location.href.split("#")[0],
       debug: false
@@ -76,16 +76,16 @@ class Index extends Component {
           // wx.updateAppMessageShareData({ 
           //   title: '探索你的潜能', // 分享标题
           //   desc: '探索你的潜能', // 分享描述
-          //   link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          //   imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.jpg', // 分享图标
+          //   link: 'https://cocostar.com.cn/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+          //   imgUrl: 'https://cocostar.com.cn/kaltendin/exploratory_testing/share.jpg', // 分享图标
           //   success: function () {
           //     // 设置成功
           //   }
           // })
           // wx.updateTimelineShareData({ 
           //   title: '探索你的潜能', // 分享标题
-          //   link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-          //   imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.jpg', // 分享图标
+          //   link: 'https://cocostar.com.cn/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+          //   imgUrl: 'https://cocostar.com.cn/kaltendin/exploratory_testing/share.jpg', // 分享图标
           //   success: function () {
           //     // 设置成功
           //   }
@@ -93,16 +93,16 @@ class Index extends Component {
           wx.onMenuShareAppMessage({
             title: '这有一张票送你去宇宙外太空，探索你的潜能', // 分享标题
             desc: '恭喜您正在登陆X星球，前方高能…', // 分享描述
-            link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.jpg', // 分享图标
+            link: 'https://cocostar.com.cn/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://cocostar.com.cn/kaltendin/exploratory_testing/share.jpg', // 分享图标
             success: function () {
               // 用户点击了分享后执行的回调函数
             }
           })
           wx.onMenuShareTimeline({
             title: '这有一张票送你去宇宙外太空，探索你的潜能', // 分享标题
-            link: 'https://finalmeet.com/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: 'https://finalmeet.com/kaltendin/exploratory_testing/share.jpg', // 分享图标
+            link: 'https://cocostar.com.cn/kaltendin/exploratory_testing/', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://cocostar.com.cn/kaltendin/exploratory_testing/share.jpg', // 分享图标
             success: function () {
             // 用户点击了分享后执行的回调函数
             }
